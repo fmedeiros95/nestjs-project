@@ -1,27 +1,14 @@
-import { ApiProperty } from "@nestjs/swagger";
 import { hashSync } from "bcrypt";
-import { BeforeInsert, Column, Entity, OneToMany } from "typeorm";
+import { BeforeInsert, Column, Entity } from "typeorm";
 import { EntityBase } from "../../../utils/entity-base.util";
-import { UserBalance } from "./user-balance.entity";
 
 @Entity()
 export class User extends EntityBase {
-	@ApiProperty({
-		example: 'email@example.com',
-		description: 'Email do usuário',
-	})
 	@Column({ unique: true })
 	email: string;
 
-	@ApiProperty({
-		example: '123456',
-		description: 'Senha do usuário',
-	})
 	@Column({ nullable: true })
 	password: string;
-
-	@OneToMany(() => UserBalance, balance => balance.user)
-	balances: UserBalance[];
 
 	@BeforeInsert()
     hashPassword() {

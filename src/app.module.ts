@@ -9,18 +9,21 @@ import { databaseConfig } from './configs/database';
 import { DataSource } from 'typeorm';
 import { ScheduleModule } from '@nestjs/schedule';
 import { CompaniesModule } from './modules/companies/companies.module';
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './guards/roles.guard';
 
 @Module({
 	imports: [
 		ScheduleModule.forRoot(),
 		ConfigModule.forRoot(),
 		TypeOrmModule.forRoot(databaseConfig),
-		UsersModule,
 		AuthModule,
+		UsersModule,
 		CompaniesModule
 	],
 	controllers: [],
 	providers: [
+		{ provide: APP_GUARD, useClass: RolesGuard },
 		AppService,
 		IbgeService
 	],

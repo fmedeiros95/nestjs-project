@@ -9,9 +9,7 @@ export class UserSubscriber implements EntitySubscriberInterface<User> {
 		this.dataSource.subscribers.push(this);
 	}
 
-	listenTo() {
-		return User;
-	}
+	listenTo() { return User; }
 
 	beforeInsert(event: InsertEvent<User>) {
 		// use bcrypt to hash the password
