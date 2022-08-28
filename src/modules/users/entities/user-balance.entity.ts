@@ -1,6 +1,6 @@
-import { EntityBase } from "../../../utils/EntityBase";
+import { EntityBase } from "../../../utils/entity-base.util";
 import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
-import { User } from "./User";
+import { User } from "./user.entity";
 
 @Entity()
 export class UserBalance extends EntityBase {

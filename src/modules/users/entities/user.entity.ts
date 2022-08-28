@@ -1,8 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { hashSync } from "bcrypt";
 import { BeforeInsert, Column, Entity, OneToMany } from "typeorm";
-import { EntityBase } from "../../../utils/EntityBase";
-import { UserBalance } from "./UserBalance";
+import { EntityBase } from "../../../utils/entity-base.util";
+import { UserBalance } from "./user-balance.entity";
 
 @Entity()
 export class User extends EntityBase {
